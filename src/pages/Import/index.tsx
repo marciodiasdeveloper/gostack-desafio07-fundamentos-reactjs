@@ -47,14 +47,14 @@ const Import: React.FC = () => {
   }
 
   function submitFile(files: File[]): void {
-    Files.forEach(file => {
+    files.forEach(file => {
       const newFile: FileProps = {
         file,
         name: file.name,
         readableSize: String(file.size),
       };
 
-      setUploadedFiles([...uploadFiles, newFile]);
+      setUploadedFiles([...uploadedFiles, newFile]);
     })
   }
 

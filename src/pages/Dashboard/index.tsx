@@ -88,8 +88,8 @@ const Dashboard: React.FC = () => {
               {transactions.map(transaction => (
                 <tr key={transaction.id}>
                   <td className="title">{transaction.title}</td>
-                  <td className={transaction.Type === 'income' ? 'income' : 'outcome' }>
-                    {transaction.Type === 'outcome' && '- '}
+                  <td className={transaction.type === 'income' ? 'income' : 'outcome' }>
+                    {transaction.type === 'outcome' && '- '}
                     {formatValue(transaction.value)}
                   </td>
                   <td>{transaction.category.title}</td>
