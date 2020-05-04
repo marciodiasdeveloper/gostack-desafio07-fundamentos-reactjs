@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -26,18 +27,18 @@ const Import: React.FC = () => {
     const data = new FormData();
 
     async function processArray(): Promise<void> {
-      uploadedFiles.map(async (uploadedFile) => {
+      for (const uploadedFile of uploadedFiles) {
         data.append('file', uploadedFile.file);
 
         try {
+          // eslint-disable-next-line no-await-in-loop
           await api.post('/transactions/import', data);
         } catch (err) {
           console.log(err.response.error);
         }
 
         data.delete('file');
-
-      });
+      }
     }
 
     await processArray();
